@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
+import * as authService from '../../services/authService'
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [formData, setFormData] = useState({
     email: '',
     pw: ''
   })
+  const navigate = useNavigate()
 
   const handleChange = e => {
     setFormData({
@@ -15,8 +17,16 @@ const LoginForm = () => {
     })
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = evt => {
+    evt.preventDefault()
+    authService.login(formData)
+    .then(() => {
+      props.handleSignupOrLogin()
+      navigate('/')
+    })
+    .catch(err => {
+      alert('Invalid Credentials')
+    })
   }
 
   return (

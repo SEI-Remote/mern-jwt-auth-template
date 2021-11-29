@@ -16,7 +16,7 @@ const App = () => {
 		navigate('/')
 	}
 
-	const handleSignup = () => {
+	const handleSignupOrLogin = () => {
 		setUser(authService.getUser())
 	}
 
@@ -25,8 +25,8 @@ const App = () => {
 			<NavBar user={user} handleLogout={handleLogout} />
 			<Routes>
 				<Route path='/' element={<Landing user={user} />} />
-				<Route path='/signup' element={<Signup handleSignup={handleSignup} />} />
-				<Route path='/login' element={<Login />} />
+				<Route path='/signup' element={<Signup handleSignupOrLogin={handleSignupOrLogin} />} />
+				<Route path='/login' element={<Login handleSignupOrLogin={handleSignupOrLogin} />} />
 			</Routes>
 		</>
 	);
