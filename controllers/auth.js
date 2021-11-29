@@ -26,6 +26,25 @@ function createJWT(user) {
   )
 }
 
+async function login(req, res) {
+  try {
+    const user = await User.findOne({ email: req.body.email })
+    if (!user) return res.status(401).json({ err: 'User not found'})
+    user.comparePassword(req.body.pw, (err, isMatch) => {
+      if (isMatch) {
+        const token = createJWT(user)
+        res.json({ token })
+      } else {
+        return res.status(401).json({ err: 'Incorrect password' })
+      }
+    })
+  }
+  catch (err) {
+    return res.status(400).json(err)
+  }
+}
+
 export {
-  signup
+  signup,
+  login
 }
