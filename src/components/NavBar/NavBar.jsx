@@ -8,11 +8,15 @@ const NavBar = ({ user, handleLogout }) => {
 				<nav>
 					<div>
 						<ul>
-							<li>Welcome, {user.name}</li>
-							{/* <li>
+							<li>
+								Welcome, {user.name}
+							</li>
+							<li>
                 <Link to="/users">Users</Link>
-              </li> */}
-							<li><Link to='' onClick={handleLogout}>LOG OUT</Link></li>
+              </li>
+							<li>
+								<Link to='' onClick={handleLogout}>LOG OUT</Link>
+							</li>
 						</ul>
 					</div>
 				</nav>
@@ -23,9 +27,9 @@ const NavBar = ({ user, handleLogout }) => {
 							<li>
 								<Link to="/login">Log In</Link>
 							</li>
-							{/* <li>
+							<li>
                 <Link to="/users">Users</Link>
-              </li> */}
+              </li>
 							<li>
 								<Link to="/signup">Sign Up</Link>
 							</li>
