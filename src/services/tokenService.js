@@ -19,8 +19,13 @@ function getUserFromToken() {
   return token ? JSON.parse(atob(token.split('.')[1])).user : null
 }
 
+function removeToken() {
+  localStorage.removeItem('token')
+}
+
 export {
   setToken,
   getToken,
-  getUserFromToken
+  getUserFromToken,
+  removeToken
 }

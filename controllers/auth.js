@@ -11,7 +11,6 @@ async function signup(req, res) {
     await profile.save();
 
     const token = createJWT(user)
-    console.log(token)
     res.json({ token })
   
   } catch (err) {

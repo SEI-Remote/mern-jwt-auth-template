@@ -20,7 +20,12 @@ function getUser() {
   return tokenService.getUserFromToken()
 }
 
+function logout() {
+  tokenService.removeToken()
+}
+
 export {
   signup,
-  getUser
+  getUser,
+  logout
 }

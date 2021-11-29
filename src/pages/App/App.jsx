@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
@@ -8,12 +8,24 @@ import * as authService from '../../services/authService'
 
 const App = () => {
 	const [user, setUser] = useState(authService.getUser())
+	const navigate = useNavigate()
+
+	const handleLogout = () => {
+		authService.logout()
+		setUser(null)
+		navigate('/')
+	}
+
+	const handleSignup = () => {
+		setUser(authService.getUser())
+	}
+
 	return (
 		<>
-			<NavBar user={user} />
+			<NavBar user={user} handleLogout={handleLogout} />
 			<Routes>
 				<Route path='/' element={<Landing user={user} />} />
-				<Route path='/signup' element={<Signup />} />
+				<Route path='/signup' element={<Signup handleSignup={handleSignup} />} />
 				<Route path='/login' element={<Login />} />
 			</Routes>
 		</>
