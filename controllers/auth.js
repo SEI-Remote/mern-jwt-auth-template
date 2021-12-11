@@ -20,24 +20,26 @@ import jwt from 'jsonwebtoken'
 
 function signup(req, res) {
   Profile.findOne({ email: req.body.email })
-  .then(profileCheck => {
-    if (profileCheck) {
+  .then(profile => {
+    if (profile) {
       throw new Error('Account already exists')
     } else {
       Profile.create(req.body)
-      .then(profile => {
-        req.body.profile = profile._id
+      .then(newProfile => {
+        req.body.profile = newProfile._id
         User.create(req.body)
         .then(user => {
           const token = createJWT(user)
           res.json({ token })
         })
+        .catch(err => {
+          res.status(500).json({err: err.errmsg})
+        })
       })
     }
   })
   .catch(err => {
-    console.log(err.message)
-    res.status(400).json({err: err.message})
+    res.status(500).json({err: err.message})
   })
 }
 
