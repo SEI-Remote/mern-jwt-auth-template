@@ -17,16 +17,15 @@ const LoginForm = (props) => {
     })
   }
 
-  const handleSubmit = evt => {
+  const handleSubmit = async evt => {
     evt.preventDefault()
-    authService.login(formData)
-    .then(() => {
+    try {
+      await authService.login(formData)
       props.handleSignupOrLogin()
       navigate('/')
-    })
-    .catch(err => {
+    } catch (err) {
       alert('Invalid Credentials')
-    })
+    }
   }
 
   return (
