@@ -7,12 +7,17 @@ function signup(user) {
     headers: new Headers({ 'Content-Type': 'application/json' }),
     body: JSON.stringify(user),
   })
-  .then(res => {
-    return res.json()
+  .then(res => res.json())
+  .then(json => {
+    if (json.token) {
+      tokenService.setToken(json.token) 
+    }
+    if (json.err) {
+      throw new Error(json.err)
+    }
   })
-  .then(({ token }) => tokenService.setToken(token)) 
   .catch(err => {
-    console.log(err)
+    throw err
   })
 }
 
@@ -32,11 +37,11 @@ function login(credentials) {
   })
   .then(res => {
     if (res.ok) return res.json()
-    throw new Error('Bad Credentials!')
+    throw new Error('Bad credentials!')
   })
   .then(({ token }) => tokenService.setToken(token))
   .catch(err => {
-    console.log(err)
+    throw err
   })
 }
 

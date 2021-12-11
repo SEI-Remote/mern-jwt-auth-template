@@ -19,17 +19,25 @@ import jwt from 'jsonwebtoken'
 // }
 
 function signup(req, res) {
-  Profile.create(req.body)
-  .then(profile => {
-    req.body.profile = profile._id
-    User.create(req.body)
-    .then(user => {
-      const token = createJWT(user)
-      res.json({ token })
-    })
+  Profile.findOne({ email: req.body.email })
+  .then(profileCheck => {
+    if (profileCheck) {
+      throw new Error('Account already exists')
+    } else {
+      Profile.create(req.body)
+      .then(profile => {
+        req.body.profile = profile._id
+        User.create(req.body)
+        .then(user => {
+          const token = createJWT(user)
+          res.json({ token })
+        })
+      })
+    }
   })
   .catch(err => {
-    res.status(400).send({ err: err.errmsg })
+    console.log(err.message)
+    res.status(400).json({err: err.message})
   })
 }
 
@@ -68,7 +76,7 @@ function login(req, res) {
         const token = createJWT(user)
         res.json({ token })
       } else {
-        return res.status(401).json({ err: 'Incorrect password' })
+        res.status(401).json({ err: 'Incorrect password' })
       }
     })
   })

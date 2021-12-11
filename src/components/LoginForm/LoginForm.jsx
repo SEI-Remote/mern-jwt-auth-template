@@ -11,6 +11,7 @@ const LoginForm = (props) => {
   const navigate = useNavigate()
 
   const handleChange = e => {
+    props.updateMessage('')
     setFormData({
       ...formData,
       [e.target.name]: e.target.value 
@@ -24,7 +25,7 @@ const LoginForm = (props) => {
       props.handleSignupOrLogin()
       navigate('/')
     } catch (err) {
-      alert('Invalid Credentials')
+      props.updateMessage(err.message)
     }
   }
 
