@@ -5,6 +5,4 @@ function index(req, res) {
   .then(users => res.json(users))
 }
 
-export {
-  index,
-}
+export {index}

@@ -5,7 +5,7 @@ function setToken(token) {
 function getToken() {
   let token = localStorage.getItem('token')
   if (token) {
-    const payload = JSON.parse(atob(token.split('.')[1]))
+    const payload = JSON.parse(Buffer.from(token.split('.')[1], 'base64'))
     if (payload.exp < Date.now() / 1000) {
       localStorage.removeItem('token')
       token = null
@@ -18,16 +18,13 @@ function getToken() {
 
 function getUserFromToken() {
   const token = getToken()
-  return token ? JSON.parse(atob(token.split('.')[1])).user : null
+  return token
+    ? JSON.parse(Buffer.from(token.split('.')[1], 'base64')).user
+    : null
 }
 
 function removeToken() {
   localStorage.removeItem('token')
 }
 
-export {
-  setToken,
-  getToken,
-  getUserFromToken,
-  removeToken
-}
+export { setToken, getToken, getUserFromToken, removeToken }

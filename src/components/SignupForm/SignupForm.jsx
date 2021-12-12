@@ -3,20 +3,20 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from './SignupForm.module.css'
 import * as authService from '../../services/authService'
 
-const SignupForm = (props) => {
+const SignupForm = props => {
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    passwordConf: ''
+    passwordConf: '',
   })
-  
+
   const handleChange = e => {
     props.updateMessage('')
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
@@ -30,9 +30,9 @@ const SignupForm = (props) => {
       props.updateMessage(err.message)
     }
   }
-  
+
   const { name, email, password, passwordConf } = formData
-  
+
   const isFormInvalid = () => {
     return !(name && email && password && password === passwordConf)
   }
@@ -44,9 +44,7 @@ const SignupForm = (props) => {
       className={styles.container}
     >
       <div className={styles.inputContainer}>
-        <label htmlFor="name" className={styles.label}>
-          Name
-        </label>
+        <label htmlFor="name" className={styles.label}>Name</label>
         <input
           type="text"
           autoComplete="off"
@@ -79,7 +77,9 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <label htmlFor="confirm" className={styles.label}>Confirm Password</label>
+        <label htmlFor="confirm" className={styles.label}>
+          Confirm Password
+        </label>
         <input
           type="password"
           autoComplete="off"
@@ -90,7 +90,9 @@ const SignupForm = (props) => {
         />
       </div>
       <div className={styles.inputContainer}>
-        <button disabled={isFormInvalid()} className={styles.button}>Sign Up</button>
+        <button disabled={isFormInvalid()} className={styles.button}>
+          Sign Up
+        </button>
         <Link to="/">
           <button>Cancel</button>
         </Link>
@@ -98,5 +100,5 @@ const SignupForm = (props) => {
     </form>
   )
 }
- 
+
 export default SignupForm

@@ -54,7 +54,4 @@ function login(req, res) {
   })
 }
 
-export {
-  signup,
-  login
-}
+export {signup, login}

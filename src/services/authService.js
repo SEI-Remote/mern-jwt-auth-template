@@ -33,7 +33,7 @@ async function login(credentials) {
     const res = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     })
     const json = await res.json()
     if (json.token) {
@@ -47,9 +47,4 @@ async function login(credentials) {
   }
 }
 
-export {
-  signup,
-  getUser,
-  logout,
-  login
-}
+export { signup, getUser, logout, login }

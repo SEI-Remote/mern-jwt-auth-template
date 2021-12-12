@@ -13,13 +13,13 @@ const Users = () => {
     <>
       <h1>Hello.  This is a list of all the users.</h1>
       {users.length ? 
-      <>
-        {users.map(user=>
-          <p key={user._id}>{user.name}</p>
-        )}
-      </>
+        <>
+          {users.map(user=>
+            <p key={user._id}>{user.name}</p>
+          )}
+        </>
       :
-      <p>No users yet</p>
+        <p>No users yet</p>
       }
     </>
   )

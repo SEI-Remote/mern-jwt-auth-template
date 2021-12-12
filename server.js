@@ -14,7 +14,7 @@ const app = express()
 
 app.use(
   express.static(
-    path.join(path.dirname(fileURLToPath(import.meta.url)),'build')
+    path.join(path.dirname(fileURLToPath(import.meta.url)), 'build')
   )
 )
 app.use(cors())

@@ -6,7 +6,7 @@ Use this to go build things! 🚀
 
 ## To Use This Template
 
-__Replace `<name-of-your-app-here>` in the commands below with the name of your app!__
+**Replace `<name-of-your-app-here>` in the commands below with the name of your app!**
 
 ```bash
 git clone https://github.com/SEI-Remote-WC/mern-jwt-auth-template-hooks <name-of-your-app-here>

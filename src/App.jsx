@@ -8,39 +8,39 @@ import Users from './pages/Users/Users'
 import * as authService from './services/authService'
 
 const App = () => {
-	const [user, setUser] = useState(authService.getUser())
-	const navigate = useNavigate()
+  const [user, setUser] = useState(authService.getUser())
+  const navigate = useNavigate()
 
-	const handleLogout = () => {
-		authService.logout()
-		setUser(null)
-		navigate('/')
-	}
+  const handleLogout = () => {
+    authService.logout()
+    setUser(null)
+    navigate('/')
+  }
 
-	const handleSignupOrLogin = () => {
-		setUser(authService.getUser())
-	}
+  const handleSignupOrLogin = () => {
+    setUser(authService.getUser())
+  }
 
-	return (
-		<>
-			<NavBar user={user} handleLogout={handleLogout} />
-			<Routes>
-				<Route path='/' element={<Landing user={user} />} />
-				<Route 
-					path='/signup'
-					element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
-				/>
-				<Route 
-					path='/login'
-					element={<Login handleSignupOrLogin={handleSignupOrLogin} />} 
-				/>
-				<Route 
-					path='/users'
-					element={user ? <Users /> : <Navigate to='/login' />}
-				/>
-			</Routes>
-		</>
-	)
+  return (
+    <>
+      <NavBar user={user} handleLogout={handleLogout} />
+      <Routes>
+        <Route path="/" element={<Landing user={user} />} />
+        <Route
+          path="/signup"
+          element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/login"
+          element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
+        />
+        <Route
+          path="/users"
+          element={user ? <Users /> : <Navigate to="/login" />}
+        />
+      </Routes>
+    </>
+  )
 }
- 
+
 export default App
