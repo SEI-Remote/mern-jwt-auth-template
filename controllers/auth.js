@@ -10,18 +10,10 @@ function signup(req, res) {
     } else if (!process.env.SECRET){
       throw new Error('no SECRET in .env file')
     } else {
-      const newProfile = {
-        name: req.body.name,
-        email: req.body.email,
-      }
-      const newUser = {
-        email: req.body.email,
-        password: req.body.password,
-      }
-      Profile.create(newProfile)
+      Profile.create(req.body)
       .then(newProfile => {
         newUser.profile = newProfile._id
-        User.create(newUser)
+        User.create(req.body)
         .then(user => {
           const token = createJWT(user)
           res.status(200).json({ token })
