@@ -7,11 +7,21 @@ function signup(req, res) {
   .then(profile => {
     if (profile) {
       throw new Error('Account already exists')
+    } else if (!process.env.SECRET){
+      throw new Error('no SECRET in .env file')
     } else {
-      Profile.create(req.body)
+      const newProfile = {
+        name: req.body.name,
+        email: req.body.email,
+      }
+      const newUser = {
+        email: req.body.email,
+        password: req.body.password,
+      }
+      Profile.create(newProfile)
       .then(newProfile => {
-        req.body.profile = newProfile._id
-        User.create(req.body)
+        newUser.profile = newProfile._id
+        User.create(newUser)
         .then(user => {
           const token = createJWT(user)
           res.status(200).json({ token })
