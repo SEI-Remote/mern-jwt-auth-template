@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import * as userService from '../../services/userService'
 
 const Users = () => {
@@ -19,7 +19,7 @@ const Users = () => {
         )}
       </>
       :
-        <p>An error occured</p>
+      <p>An error occured</p>
       }
     </>
   );
