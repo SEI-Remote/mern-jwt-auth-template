@@ -14,7 +14,7 @@ function signup(req, res) {
         User.create(req.body)
         .then(user => {
           const token = createJWT(user)
-          res.json({ token })
+          res.status(200).json({ token })
         })
         .catch(err => {
           res.status(500).json({err: err.errmsg})
