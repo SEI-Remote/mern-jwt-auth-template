@@ -1,3 +1,4 @@
+/* eslint-disable import/first */
 import 'dotenv/config.js'
 import express from 'express'
 import path from 'path'
