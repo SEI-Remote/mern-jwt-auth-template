@@ -35,11 +35,15 @@ function login(credentials) {
     headers: new Headers({ 'Content-Type': 'application/json'}),
     body: JSON.stringify(credentials)
   })
-  .then(res => {
-    if (res.ok) return res.json()
-    throw new Error('Bad credentials!')
+  .then(res => res.json())
+  .then(json => {
+    if (json.token) {
+      tokenService.setToken(json.token) 
+    }
+    if (json.err) {
+      throw new Error(json.err)
+    }
   })
-  .then(({ token }) => tokenService.setToken(token))
   .catch(err => {
     throw err
   })
