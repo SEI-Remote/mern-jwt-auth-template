@@ -1,24 +1,23 @@
 import * as tokenService from './tokenService'
 const BASE_URL = '/api/auth/'
 
-function signup(user) {
-  return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
-    headers: new Headers({ 'Content-Type': 'application/json' }),
-    body: JSON.stringify(user),
-  })
-  .then(res => res.json())
-  .then(json => {
+async function signup(user) {
+  try {
+    const res = await fetch(`${BASE_URL}/signup`, {
+      method: 'POST',
+      headers: new Headers({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify(user),
+    })
+    const json = await res.json()
     if (json.token) {
-      tokenService.setToken(json.token) 
+      tokenService.setToken(json.token)
     }
     if (json.err) {
       throw new Error(json.err)
     }
-  })
-  .catch(err => {
+  } catch (err) {
     throw err
-  })
+  }
 }
 
 function getUser() {
@@ -29,24 +28,23 @@ function logout() {
   tokenService.removeToken()
 }
 
-function login(credentials) {
-  return fetch(`${BASE_URL}/login`, {
-    method: 'POST',
-    headers: new Headers({ 'Content-Type': 'application/json'}),
-    body: JSON.stringify(credentials)
-  })
-  .then(res => res.json())
-  .then(json => {
+async function login(credentials) {
+  try {
+    const res = await fetch(`${BASE_URL}/login`, {
+      method: 'POST',
+      headers: new Headers({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify(credentials)
+    })
+    const json = await res.json()
     if (json.token) {
-      tokenService.setToken(json.token) 
+      tokenService.setToken(json.token)
     }
     if (json.err) {
       throw new Error(json.err)
     }
-  })
-  .catch(err => {
+  } catch (err) {
     throw err
-  })
+  }
 }
 
 export {

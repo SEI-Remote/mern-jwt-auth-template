@@ -12,10 +12,7 @@ const LoginForm = (props) => {
 
   const handleChange = e => {
     props.updateMessage('')
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value 
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async evt => {
@@ -64,7 +61,7 @@ const LoginForm = (props) => {
         </Link>
       </div>
     </form>
-  );
+  )
 }
  
-export default LoginForm;
+export default LoginForm

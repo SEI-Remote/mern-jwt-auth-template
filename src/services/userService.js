@@ -1,11 +1,11 @@
 import * as tokenService from '../services/tokenService'
 const BASE_URL = '/api/users'
 
-function getAllUsers() {
-  return fetch(BASE_URL, {
-    headers: {Authorization: `Bearer ${tokenService.getToken()}`}
+async function getAllUsers() {
+  const res = await fetch(BASE_URL, {
+    headers: { Authorization: `Bearer ${tokenService.getToken()}` }
   })
-  .then(res => res.json())
+  return await res.json()
 }
 
 export {

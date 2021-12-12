@@ -13,9 +13,12 @@ const LoginPage = (props) => {
     <main className={styles.container}>
       <h1>Log In</h1>
       <p>{message}</p>
-      <LoginForm handleSignupOrLogin={props.handleSignupOrLogin} updateMessage={updateMessage} />
+      <LoginForm 
+        handleSignupOrLogin={props.handleSignupOrLogin}
+        updateMessage={updateMessage}
+      />
     </main>
-  );
+  )
 }
  
-export default LoginPage;
+export default LoginPage

@@ -96,7 +96,7 @@ const SignupForm = (props) => {
         </Link>
       </div>
     </form>
-  );
+  )
 }
  
-export default SignupForm;
+export default SignupForm

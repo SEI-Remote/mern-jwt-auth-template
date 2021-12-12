@@ -1,4 +1,4 @@
-# MERN Stack with JWT Template
+# MERN Stack with JWT Auth Template
 
 This is a MERN Stack template that includes JWT Authentication.
 

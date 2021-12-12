@@ -17,6 +17,7 @@ function signup(req, res) {
           res.status(200).json({ token })
         })
         .catch(err => {
+          Profile.findByIdAndDelete(newProfile._id)
           res.status(500).json({err: err.errmsg})
         })
       })

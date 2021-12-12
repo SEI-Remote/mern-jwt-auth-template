@@ -15,7 +15,7 @@ const Signup = (props) => {
       <p>{message}</p>
       <SignupForm {...props} updateMessage={updateMessage} />
     </main>
-  );
+  )
 }
  
-export default Signup;
+export default Signup
