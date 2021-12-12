@@ -3,7 +3,6 @@ function setToken(token) {
 }
 
 function getToken() {
-  console.log(localStorage.getItem('token'))
   let token = localStorage.getItem('token')
   if (token) {
     const payload = JSON.parse(atob(token.split('.')[1]))
