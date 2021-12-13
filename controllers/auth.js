@@ -48,6 +48,7 @@ function login(req, res) {
   })
 }
 
+/* -- Helper Functions -- */
 function createJWT(user) {
   return jwt.sign(
     { user }, // data payload
@@ -56,4 +57,4 @@ function createJWT(user) {
   )
 }
 
-export { signup, login}
+export { signup, login }
