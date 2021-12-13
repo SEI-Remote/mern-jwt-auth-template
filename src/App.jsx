@@ -5,8 +5,10 @@ import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 
+import * as authService from './services/authService'
+
 const App = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(authService.getUser())
 
   return (
     <>

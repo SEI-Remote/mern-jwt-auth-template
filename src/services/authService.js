@@ -21,5 +21,9 @@ async function signup(user) {
   }
 }
 
-export { signup, }
+function getUser() {
+  return tokenService.getUserFromToken()
+}
+
+export { signup, getUser, }
 
