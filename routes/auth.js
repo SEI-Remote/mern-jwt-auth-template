@@ -5,8 +5,8 @@ const router = Router()
 
 /*---------- Public Routes ----------*/
 router.post('/signup', authCtrl.signup)
-router.post('/login', authCtrl.login)
 
 /*---------- Protected Routes ----------*/
+
 
 export { router }
