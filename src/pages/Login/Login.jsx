@@ -14,7 +14,7 @@ const LoginPage = props => {
       <h1>Log In</h1>
       <p>{message}</p>
       <LoginForm
-        handleSignupOrLogin={props.handleSignupOrLogin}
+        {...props}
         updateMessage={updateMessage}
       />
     </main>

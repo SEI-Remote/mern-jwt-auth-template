@@ -20,8 +20,8 @@ const SignupForm = props => {
     })
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = async evt => {
+    evt.preventDefault()
     try {
       await authService.signup(formData)
       props.handleSignupOrLogin()

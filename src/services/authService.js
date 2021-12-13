@@ -16,6 +16,7 @@ async function signup(user) {
       throw new Error(json.err)
     }
   } catch (err) {
+    console.log(err)
     throw err
   }
 }

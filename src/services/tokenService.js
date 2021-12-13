@@ -2,6 +2,13 @@ function setToken(token) {
   localStorage.setItem('token', token)
 }
 
+function getUserFromToken() {
+  const token = getToken()
+  return token
+    ? JSON.parse(Buffer.from(token.split('.')[1], 'base64')).user
+    : null
+}
+
 function getToken() {
   let token = localStorage.getItem('token')
   if (token) {
@@ -14,13 +21,6 @@ function getToken() {
     localStorage.removeItem('token')
   }
   return token
-}
-
-function getUserFromToken() {
-  const token = getToken()
-  return token
-    ? JSON.parse(Buffer.from(token.split('.')[1], 'base64')).user
-    : null
 }
 
 function removeToken() {
