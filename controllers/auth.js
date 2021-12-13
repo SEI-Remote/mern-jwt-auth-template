@@ -11,7 +11,7 @@ function signup(req, res) {
     } else {
       Profile.create(req.body)
       .then(newProfile => {
-        newUser.profile = newProfile._id
+        req.body.profile = newProfile._id
         User.create(req.body)
         .then(user => {
           // TODO: Send back a JWT instead of the user
