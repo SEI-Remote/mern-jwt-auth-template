@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
@@ -38,7 +38,7 @@ const App = () => {
         />
         <Route 
           path="/profiles"
-          element={<Profiles />}
+          element={user ? <Profiles /> : <Navigate to="/login"/>}
         />
       </Routes>
     </>
