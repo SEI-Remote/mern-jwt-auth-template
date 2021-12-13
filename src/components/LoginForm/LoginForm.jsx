@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './LoginForm.module.css'
+import * as authService from '../../services/authService'
 
 const LoginForm = props => {
   const [formData, setFormData] = useState({
@@ -13,8 +14,17 @@ const LoginForm = props => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async evt => {
-    evt.preventDefault()
+  const navigate = useNavigate()
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    try {
+      await authService.login(formData)
+      props.handleSignupOrLogin()
+      navigate('/')
+    } catch (err) {
+      props.updateMessage(err.message)
+    }
   }
 
   return (
