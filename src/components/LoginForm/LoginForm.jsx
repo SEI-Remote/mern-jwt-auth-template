@@ -16,8 +16,8 @@ const LoginForm = props => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async e => {
-    e.preventDefault()
+  const handleSubmit = async evt => {
+    evt.preventDefault()
     try {
       await authService.login(formData)
       props.handleSignupOrLogin()
