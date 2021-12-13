@@ -52,7 +52,7 @@ function createJWT(user) {
   return jwt.sign(
     { user }, // data payload
     process.env.SECRET,
-    { expiresIn: "24h" }
+    { expiresIn: '24h' }
   )
 }
 

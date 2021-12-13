@@ -1,5 +1,5 @@
 function setToken(token) {
-  localStorage.setItem("token", token)
+  localStorage.setItem('token', token)
 }
 
 function getUserFromToken() {
