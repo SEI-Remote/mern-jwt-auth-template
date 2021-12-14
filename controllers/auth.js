@@ -30,14 +30,6 @@ function signup(req, res) {
   })
 }
 
-function createJWT(user) {
-  return jwt.sign(
-    { user }, 
-    process.env.SECRET,
-    { expiresIn: '24h' }
-  )
-}
-
 function login(req, res) {
   User.findOne({ email: req.body.email })
   .then(user => {
@@ -54,6 +46,16 @@ function login(req, res) {
   .catch(err => {
     res.status(500).json(err)
   })
+}
+
+/* --== Helper Functions ==-- */
+
+function createJWT(user) {
+  return jwt.sign(
+    { user }, 
+    process.env.SECRET,
+    { expiresIn: '24h' }
+  )
 }
 
 export {signup, login}
