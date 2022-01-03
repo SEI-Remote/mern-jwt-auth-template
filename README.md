@@ -1,4 +1,9 @@
-# MERN Stack with JWT Auth Template
+# MERN Stack with JWT Auth Template 
+#
+# DEPRECATION NOTICE:
+This is a coupled application and will NOT work with the most current version of `react-scripts`.  The code in this repository functions, but if you're looking for a more current option, please refer to the decoupled version of this application:
+- Front end can be found [here](https://github.com/SEI-Remote-WC/jwt-auth-mern-template-front-end).
+- Back end can be found [here](https://github.com/SEI-Remote-WC/jwt-auth-mern-template-back-end).
 
 This is a MERN Stack template that includes JWT Authentication.
 
@@ -9,7 +14,7 @@ Use this to go build things! 🚀
 **Replace `<name-of-your-app-here>` in the commands below with the name of your app!**
 
 ```bash
-git clone https://github.com/SEI-Remote/mern-jwt-auth-template <name-of-your-app-here>
+git clone https://github.com/SEI-Remote-WC/jwt-auth-mern-template-coupled <name-of-your-app-here>
 cd <name-of-your-app-here>
 ```
 
